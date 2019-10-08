@@ -1,0 +1,10 @@
+<view class="musiclist" style="background:url({{listInfo.coverImgUrl}}) no-repeat top/cover"></view>
+<view class="musiclist-mask"></view>
+<view class="music-info">
+  <image src="{{listInfo.coverImgUrl}}"></image>
+  <view class="musiclist-text">
+    <view>{{listInfo.name}}</view>
+  </view>
+</view>
+<!-- 歌单列表 -->
+<p-musiclist musiclist="{{musiclist}}" />

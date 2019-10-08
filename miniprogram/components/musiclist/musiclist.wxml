@@ -1,0 +1,12 @@
+<block wx:for="{{musiclist}}" wx:key="id">
+  <view class="musiclist-c {{actived==item.id?'actived':''}}" bindtap="actived" data-id="{{item.id}}" data-index="{{index}}">
+    <view class="musiclist-c-series">{{index+1}}</view>
+    <view class="musiclist-c-info">
+      <view class="info-titile">
+        <text class="titile-name">{{item.name}}</text>
+        <text class="titile-referral {{actived==item.id?'actived':''}}">{{item.alia.length===0?"":item.alia[0]}}</text>
+      </view>
+      <view class="info-author {{actived==item.id?'actived':''}}">{{item.ar[0].name}} - {{item.al.name}}</view>
+    </view>
+  </view>
+</block>

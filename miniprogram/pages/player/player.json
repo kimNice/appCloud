@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "p-progressbar":"/components/progress-bar/progress-bar",
+    "p-lyric":"/components/lyric/lyric"
+  }
+}

@@ -1,0 +1,5 @@
+<view class="playlist" bindtap="goTolist" data-_id="{{playlist.id}}">
+    <image src="{{playlist.picUrl}}" class="playlist-img"></image>
+    <text class="playlist-text">{{number_num}}</text>
+    <view class="playlist-name">{{playlist.name}}</view>
+</view>

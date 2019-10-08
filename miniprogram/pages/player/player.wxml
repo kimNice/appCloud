@@ -1,0 +1,23 @@
+<view class="player-bg" style="background: url({{picUrl}}) no-repeat center/cover;"></view>
+<view class="player-mask"></view>
+
+
+<view class="player-info">
+  <view class="player-disc {{isPlaying?'play':''}}" hidden="{{isgoLyric}}" bind:tap="isLyric">
+    <image class="player-img rotation {{isPlaying?'':'rotation-paused'}}" src="{{picUrl}}"></image>
+  </view>
+  <!-- 歌词 -->
+  <p-lyric class="lyric" isgoLyricShow="{{!isgoLyric}}" bind:tap="isLyric" lyric="{{lyric}}"/>
+
+  <!-- 播放进度条组件 -->
+  <view class="progressbar">
+    <p-progressbar bind:musicEnd="nextPlay" bind:timeUpdate="timeUpdate" bind:musicPause="musicPause" bind:musicPlay="musicPlay" isSame="{{isSame}}"/>
+  </view>
+  
+  <!-- 播放按钮 -->
+  <view class="player-list">
+      <text class="iconfont icon-047caozuo_shangyishou" bind:tap="upPlay"></text>
+      <text class="iconfont  {{isPlaying?'icon-bofang1':'icon-zanting1'}}" bindtap="stopPlay"></text>
+      <text class="iconfont icon-048caozuo_xiayishou" bind:tap="nextPlay"></text>
+  </view>
+</view>

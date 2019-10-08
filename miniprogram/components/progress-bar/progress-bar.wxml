@@ -1,0 +1,11 @@
+<view class="progress">
+    <text class="startTime">{{allTime.startTime}}</text>
+    <view class="movable">
+        <movable-area class="movable-area">
+          <movable-view class="movable-view" direction="horizontal" x="{{movable_X}}" damping="1000" bindchange="onchange" bindtouchend="ontouchend"></movable-view>
+        </movable-area>
+        <progress stroke-width="4" activeColor="#fff" backgroundColor="#969696" percent="{{progress}}"></progress>
+    </view>
+    
+    <text class="endTime">{{allTime.endTime}}</text>
+</view>

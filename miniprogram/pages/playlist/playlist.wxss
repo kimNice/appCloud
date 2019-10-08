@@ -1,0 +1,19 @@
+/* pages/playlist/playlist.wxss */
+.swiper-view{
+  width: 100%;
+  height: 320rpx;
+
+}
+
+.swiper-img{
+  width: 100%;
+  height: 320rpx;
+}
+
+.playlist-contont{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top:20rpx;
+  flex-direction: row;
+}

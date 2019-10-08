@@ -1,0 +1,46 @@
+/* pages/musiclist/musiclist.wxss */
+.musiclist{
+  
+  height: 320rpx;
+  opacity: 0.4;
+  filter: blur(40rpx);
+  
+}
+.musiclist-mask{
+  
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 320rpx;
+  background: rgba(51, 51, 51, 0.781);
+  z-index: -1;
+
+
+}
+.music-info{
+  display: flex;
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 320rpx;
+  padding:20rpx;
+  box-sizing: border-box;
+  align-items: center;
+}
+.music-info image{
+  width: 280rpx;
+  height: 280rpx;
+  margin-right: 24rpx;
+}
+.musiclist-text{
+  color:#fff;
+  flex-grow: 1;
+  line-height: 60rpx;
+  width: 0;
+}
+.musiclist-text view{
+  font-size: 36rpx;
+  font-weight: 400;
+}

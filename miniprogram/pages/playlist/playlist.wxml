@@ -1,0 +1,15 @@
+<!-- 轮播 -->
+<swiper autoplay="true" interval="2000" indicator-dots="true" duration="1000" class="swiper-view">
+  <block wx:for="{{swiperImgUrl}}" wx:key="index">
+    <swiper-item>
+      <image src="{{item.url}}" mode="widthFix" class="swiper-img"></image>
+    </swiper-item>
+  </block>
+</swiper>
+
+<!-- 歌单 -->
+<view class="playlist-contont">
+    <block wx:for="{{playlist}}" wx:key="_id">
+        <p-playlist playlist="{{item}}"></p-playlist>
+    </block>
+</view>
