@@ -1,0 +1,39 @@
+@import 'iconfont.wxss';
+
+.search {
+  position: relative;
+  display: flex;
+  height: 90rpx;
+  align-items: center;
+}
+
+.search-input {
+  position: relative;
+  height: 60rpx;
+  flex: 1;
+  background:#f1f1f1;
+  border-radius: 30rpx;
+  padding-left: 9%;
+}
+.icon-search{
+  position: absolute;
+  top:12%;
+  left:10rpx;
+  font-size: 46rpx;
+  color:#9f9f9f;
+}
+.input {
+  width: 90%;
+  height: 60rpx;
+  
+}
+
+.button {
+  line-height: 60rpx;
+  width: 110rpx;
+  color: #fff;
+  font-size: 26rpx;
+  background: #d43c33;
+  margin: 0 15rpx;
+  padding: 0;
+}

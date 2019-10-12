@@ -1,2 +1,27 @@
-<!--pages/blog/blog.wxml-->
-<text>pages/blog/blog.wxml</text>
+<view class="blog">
+<!-- 头部 -->
+  <view class="blog-top">
+    <view class="top-issue" bind:tap="issue" data-status="1">
+      <i class="iconfont icon-shiliangzhinengduixiang121"></i>
+    </view>
+    <view class="top-searh">
+      <p-search bind:onSearch="onSearch"></p-search>
+    </view>
+  </view>
+  <!-- 博客卡片 -->
+  
+  <view class="bloglist">
+      <block wx:for="{{blogList}}" wx:key="_id">
+          <view class="list">
+              <p-blog-card blogList="{{item}}" bind:tap="onCard" data-_id="{{item._id}}"/>
+
+              <p-blog-ctrl iconfont="iconfont" icon-pinglun="icon-pinglun" icon-fenxiang="icon-fenxiang-1"/>
+          </view>
+          
+      </block>
+  </view>
+  <!-- 底部弹窗 -->
+  <p-login showModal="{{!showModal}}" bind:loginsuccess="onloginsuccess" bind:loginfail="onloginfail"></p-login>
+  <!-- 评论弹窗 -->
+ 
+</view>

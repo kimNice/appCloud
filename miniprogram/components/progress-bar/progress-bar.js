@@ -65,7 +65,7 @@ Component({
       query.select(".movable-view").boundingClientRect()
       query.exec((rect) =>{
         
-        movableAreaWidth=rect[0].width
+        movableAreaWidth = rect[0].width
         movableViewWidth = rect[1].width
      
       })
@@ -93,7 +93,6 @@ Component({
       })
       //监听背景音频进入可播放状态事件。 但不保证后面可以流畅播放
       backgroundAudioManger.onCanplay(()=>{
-        //console.log(backgroundAudioManger.duration)
         //backgroundAudioManger.duration部分机型获取是undefined 做出兼容
         if (typeof backgroundAudioManger.duration != 'undefined'){
           this._setTime()
@@ -120,6 +119,7 @@ Component({
               ['allTime.startTime']: startTime.min + ":" + startTime.sec
             })
             currentDec = is
+            //歌词联动
             this.triggerEvent("timeUpdate",{
               currentTime
             })

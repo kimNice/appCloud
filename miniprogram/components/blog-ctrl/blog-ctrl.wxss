@@ -1,0 +1,40 @@
+.blog-ctrl{
+ 
+   
+   display: flex;
+   height: 100%;
+    background: #fff;
+    align-items: center;
+    text-align: center;
+}
+.comment{
+  
+}
+.ctrl{
+  flex:1;
+  color:#999;
+  font-size: 32rpx;
+  height: 60rpx;
+}
+.ctrl text{
+  padding-left: 10rpx;
+}
+
+
+.text-area{
+  padding: 20rpx;
+  box-sizing: border-box;
+  width: 90%;
+  
+}
+.send{
+  padding:0;
+  width: 100rpx;
+  
+  margin-left:auto;
+  margin-right: 15rpx;
+  margin-bottom: 15rpx;
+  color:#fff;
+  font-size: 26rpx;
+  background: #d43c33;
+}

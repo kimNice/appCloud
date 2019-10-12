@@ -1,0 +1,7 @@
+<view class="modal" hidden="{{showModal}}">
+  <view class="panel">
+    <i class="iconfont icon-iconset0127" bind:tap="closeModal"></i>
+
+    <slot name="modal-content"></slot>
+  </view>
+</view>

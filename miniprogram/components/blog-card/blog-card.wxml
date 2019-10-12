@@ -1,0 +1,18 @@
+<view class="blog">
+    <view class="blog-title">
+        <image src="{{blogList.imgUrl}}" class="title-img"></image>
+        <view class="title-portrait">
+          <text class="text-name">{{blogList.nickName}}</text>
+          <text class="text-time">{{createTime}}</text>
+        </view>
+    </view>
+
+    <view class="content">
+        {{blogList.content}}
+    </view>
+    <view class="blog-img">
+        <block wx:for="{{blogList.img}}" wx:key="index">
+            <image class="imgList" mode="widthFix" src="{{item}}" data-imgs="{{blogList.img}}" data-imgUrl="{{item}}" catch:tap="onImg"></image>
+        </block>
+    </view>
+</view>

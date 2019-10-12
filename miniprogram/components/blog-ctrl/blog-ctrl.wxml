@@ -1,0 +1,19 @@
+<view class="blog-ctrl">
+    <view class="ctrl comment" bind:tap="onComment">
+        <i class="iconfont icon-pinglun"></i>
+        <text>评论</text>
+    </view>
+    <view class="ctrl share">
+        <i class="iconfont icon-fenxiang"></i>
+        <text>分享</text>
+    </view>
+</view>
+
+
+<p-login showModal="{{!loginShow}}" bind:loginsuccess="onloginsuccess" bind:loginfail="onloginfail"/>
+<p-bottom-modal showModal="{{!commentShow}}">
+      <view slot="modal-content">
+          <textarea class="text-area" fixed="true" placeholder="评论内容" value="{{content}}"></textarea>
+          <button class="send">发送</button>
+      </view>
+  </p-bottom-modal>

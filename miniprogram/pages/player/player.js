@@ -80,11 +80,12 @@ Page({
         backgroundAudioManger.coverImgUrl = musiclist[currentMusic].al.picUrl
         backgroundAudioManger.singer = musiclist[currentMusic].ar[0].name
         backgroundAudioManger.epname = musiclist[currentMusic].al.name
+        
       }
-     
       this.setData({
-        isPlaying:true
+        isPlaying: true
       })
+      
     })
     wx.hideLoading()
     wx.cloud.callFunction({

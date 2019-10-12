@@ -1,0 +1,5 @@
+<p-bottom-modal showModal="{{showModal}}">
+    <view slot="modal-content">
+        <button class="login" open-type="getUserInfo" bindgetuserinfo="onGetInfo">获取微信授权信息</button>
+    </view>
+</p-bottom-modal>

@@ -1,3 +1,11 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "p-search":"/components/search/search",
+    "p-login": "/components/login/login",
+    "p-blog-card":"/components/blog-card/blog-card",
+    "p-blog-ctrl":"/components/blog-ctrl/blog-ctrl",
+    "p-bottom-modal":"/components/bottom-modal/bottom-modal"
+  },
+  "navigationBarTitleText":"发现",
+  "enablePullDownRefresh": true
 }

@@ -1,0 +1,19 @@
+<view class="edit">
+  <textarea class="textar" placeholder="分享新鲜事..." bindinput="onbindInput" maxlength="140" auto-focus="true" bindfocus="onFocus" bindblur="onBlur">
+
+  </textarea>
+
+  <view class="imgView">
+    <view class="add" wx:for="{{img}}" bind:tap="onOpenImg" data-url="{{item}}" wx:key="index">
+      <image class="img" src="{{item}}" mode="aspectFit"></image>
+      <i class="iconfont icon-iconset0127"  catch:tap="onCloseImg" data-index="{{index}}"></i>
+    </view>
+    <view class="add borders" bind:tap="onSelectImg" hidden="{{!addShow}}">
+      <i class="iconfont icon-jiahao"></i>
+    </view>
+  </view>
+</view>
+<view class="footer" style="bottom:{{f_bottom}}">
+  <text>{{textNumber}}</text>
+  <button bind:tap="onIssue">发布</button>
+</view>

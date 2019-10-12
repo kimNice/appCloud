@@ -17,6 +17,7 @@ App({
     }
     this.globalData = {
       playingMusicId:-1,
+      commentStatus:false
     }
   },
   setPlayingMusicId(musicId){

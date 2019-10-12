@@ -1,0 +1,7 @@
+<view class="search">
+    <view class="search-input">
+        <i class="iconfont icon-weibiaoti- icon-search"></i>
+        <input class="input" placeholder="请输入" placeholder-style="#999" bindinput="onInput"></input>
+    </view>
+    <button class="button" bind:tap="onSearch">搜索</button>
+</view>
