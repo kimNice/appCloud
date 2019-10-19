@@ -1,6 +1,6 @@
 /* components/blog-card/blog-card.wxss */
 page{
-  background: #f1f1f1;
+  background: #fafafa;
 }
 .blog{
   padding:20rpx;

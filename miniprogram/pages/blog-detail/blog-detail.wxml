@@ -1,2 +1,23 @@
-<!--pages/blog-detail/blog-detail.wxml-->
-<text>pages/blog-detail/blog-detail.wxml</text>
+<scroll-view class="detail-content" scroll-y="true">
+  <view class="content">
+    <p-blog-card blogList="{{blogList}}"/>
+  </view>
+  <view class="commit">
+      <view class="commit-title">评论列表</view>
+      <view class="commit-content" wx:for="{{commitDetail}}" wx:key="{{item._id}}">
+          <view class="img_name">
+              <image src="{{item.avatarUrl}}"></image>
+              <text>{{item.nickName}}</text>
+          </view>
+          <view class="commit-content">
+              {{item.content}}
+          </view>
+          <view class="commit-time">{{item.createTime}}</view>
+      </view>
+  </view>
+  
+</scroll-view>
+
+<view class="buttom">
+  <p-blog-ctrl iconfont="iconfont" blogId="{{blogId}}" icon-pinglun="icon-pinglun" icon-fenxiang="icon-fenxiang-1" bind:onCommitSuccess="onCommitSuccess"/>
+</view>

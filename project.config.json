@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
@@ -59,6 +59,20 @@
 					"name": "pages/blog-edit/blog-edit",
 					"pathName": "pages/blog-edit/blog-edit",
 					"query": "nickName=Kim✨& imgUrl:=https://wx.qlogo.cn/mmopen/vi_32/7TxPmNVTSepXPXV8w…UOGr6xpmVkQytvDdx9dlSunpvoOxz1luzGFpsQXg4ASvg/132",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "dome",
+					"pathName": "pages/dome/dome",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "detail",
+					"pathName": "pages/blog-detail/blog-detail",
+					"query": "id=dc9a49695da044fb024444ba504a1db6",
 					"scene": null
 				}
 			]

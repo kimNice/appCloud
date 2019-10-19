@@ -10,6 +10,7 @@ const TcbRouter = require("tcb-router")
 const db=cloud.database()
 let blogSelectList=db.collection("blog")
 
+let MAX_LIMIT= 100
 
 
 // 云函数入口函数
@@ -18,6 +19,7 @@ exports.main = async (event, context) => {
     event
   })
   app.router("list",async (ctx,next)=>{
+    //取到搜索的内容
     const keyword=event.keyword
     let w={}
     if(keyword.trim() != ''){
@@ -35,5 +37,42 @@ exports.main = async (event, context) => {
     })
     ctx.body=blogList
   })
+  app.router("detail", async (ctx,next)=>{
+    //查询博客
+    let detail=await blogSelectList.where({_id:event.blogId}).get().then( res =>{
+      return  res.data
+    })
+    let commiteDetail={
+        data:[]
+      }
+    //获取条数对象
+    let count =await blogSelectList.count()
+    //获取条数
+    let total=count.total
+    //如果是空就不查询
+    if(total>0){
+      const tasks = []
+      const forTime = Math.ceil(total / MAX_LIMIT)
+      for(let i=0;i<forTime;i++){
+        let promise = db.collection("blog-commit").skip(i * MAX_LIMIT).limit(MAX_LIMIT).where({ blogId: event.blogId}).orderBy("createTime",'desc').get()
+        tasks.push(promise)
+      }
+      //如果有评论信息就赋值
+      if (tasks.length > 0) {
+        commiteDetail = (await Promise.all(tasks)).reduce((acc, cur) => {
+          return {
+            data: acc.data.concat(cur.data)
+          }
+        })
+      }
+    }
+    
+    ctx.body = {
+      commiteDetail,
+      detail
+    }
+
+  })
+
   return app.serve()
 }

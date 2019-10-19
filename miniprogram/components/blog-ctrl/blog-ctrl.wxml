@@ -3,17 +3,21 @@
         <i class="iconfont icon-pinglun"></i>
         <text>评论</text>
     </view>
-    <view class="ctrl share">
+    
+    <button class="ctrl share" open-type="share" data-list="{{blogList}}" data-id="{{blogId}}">
+      <view >
         <i class="iconfont icon-fenxiang"></i>
         <text>分享</text>
     </view>
+    </button>
 </view>
 
-
+<!-- 登錄 -->
 <p-login showModal="{{!loginShow}}" bind:loginsuccess="onloginsuccess" bind:loginfail="onloginfail"/>
+<!-- 评论弹窗 -->
 <p-bottom-modal showModal="{{!commentShow}}">
-      <view slot="modal-content">
-          <textarea class="text-area" fixed="true" placeholder="评论内容" value="{{content}}"></textarea>
-          <button class="send">发送</button>
-      </view>
-  </p-bottom-modal>
+      <form slot="modal-content" report-submit="true" bindsubmit="onSend">
+          <textarea class="text-area" adjust-position fixed="true" name="content" placeholder="评论内容" value="{{content}}"></textarea>
+          <button class="send" form-type="submit">发送</button>
+      </form>
+</p-bottom-modal>

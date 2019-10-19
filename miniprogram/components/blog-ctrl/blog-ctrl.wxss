@@ -14,7 +14,12 @@
   flex:1;
   color:#999;
   font-size: 32rpx;
-  height: 60rpx;
+  line-height: 80rpx;
+  background: #fff;
+  
+}
+.ctrl::after{
+  border:0;
 }
 .ctrl text{
   padding-left: 10rpx;

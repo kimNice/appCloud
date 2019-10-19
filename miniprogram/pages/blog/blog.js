@@ -36,7 +36,7 @@ Page({
   },
   
   onCard(event){
-    // console.log(event)
+    console.log(event)
     wx.navigateTo({
       url: '/pages/blog-detail/blog-detail?id=' + event.currentTarget.dataset._id,
     })
@@ -140,7 +140,12 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (even) {
+    console.log("zhuanfa",even)
+    let blog = even.target.dataset
+    return {
+      title: blog.list.content,
+      path: '/pages/blog-detail/blog-detail?id=' + blog.id
+    }
   }
 })

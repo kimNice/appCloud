@@ -1,11 +1,14 @@
 // pages/blog-detail/blog-detail.js
+import formTime from "../../utils/formTime.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    blogList:[],
+    commitDetail:[],
+    blogId:''
   },
 
   /**
@@ -13,8 +16,41 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    this.setData({
+      blogId: options.id
+    })
+    this._getBlogDetail()
   },
+  onCommitSuccess(){
+    console.log('评论')
+    this._getBlogDetail()
+  },
+  _getBlogDetail(){
+    wx.showLoading({
+      title: '加载中',
+      mask:true
+    })
 
+    wx.cloud.callFunction({
+      name:'blog',
+      data:{
+        blogId:this.data.blogId,
+        $url:'detail'
+      }
+    }).then( res =>{
+      console.log(res)
+      let commitDetail = res.result.commiteDetail.data
+      for (let i = 0; i < commitDetail.length;i++){
+        commitDetail[i].createTime =formTime(new Date(commitDetail[i].createTime))
+      }
+      // console.log(res)
+      this.setData({
+        commitDetail,
+        blogList:res.result.detail[0]
+      })
+      wx.hideLoading()
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -61,6 +97,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    console.log(this.data.blogList)
+    let blog = this.data.blogList
 
+    return {
+      title: blog.content,
+      path: '/pages/blog-detail/blog-detail?id=' + blog._id
+    }
   }
 })

@@ -5,6 +5,7 @@ Component({
    */
   properties: {
     showModal:Boolean,
+
   },
   options:{
     styleIsolation:'apply-shared',

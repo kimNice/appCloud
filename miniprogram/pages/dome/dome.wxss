@@ -1,0 +1,34 @@
+/* pages/dome/dome.wxss */
+page{
+  margin-top:15rpx;
+  background: #f1f1f1;
+}
+.section{
+  background: #fff;
+  margin-bottom:20rpx; 
+}
+.picker{
+  padding:20rpx;
+}
+.zhifu{
+  padding:20rpx;
+  background: #fff;
+}
+.tishi{
+  padding:20rpx;
+  background: #fff;
+  margin-top: 20rpx;
+  color:#999;
+}
+
+
+.bottom{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 90rpx;
+  background: #d43c33;
+  color:#fff;
+  text-align: center;
+}

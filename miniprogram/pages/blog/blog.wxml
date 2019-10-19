@@ -15,13 +15,13 @@
           <view class="list">
               <p-blog-card blogList="{{item}}" bind:tap="onCard" data-_id="{{item._id}}"/>
 
-              <p-blog-ctrl iconfont="iconfont" icon-pinglun="icon-pinglun" icon-fenxiang="icon-fenxiang-1"/>
+              <p-blog-ctrl blogId="{{item._id}}" blogList="{{item}}" iconfont="iconfont" icon-pinglun="icon-pinglun" icon-fenxiang="icon-fenxiang-1"/>
           </view>
           
       </block>
   </view>
   <!-- 底部弹窗 -->
   <p-login showModal="{{!showModal}}" bind:loginsuccess="onloginsuccess" bind:loginfail="onloginfail"></p-login>
-  <!-- 评论弹窗 -->
+  
  
 </view>
