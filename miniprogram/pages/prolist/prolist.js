@@ -14,7 +14,24 @@ Page({
   onLoad: function (options) {
 
   },
-
+  //获取二维码
+  onQrCode(){
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.cloud.callFunction({
+      name:'getQrCode'
+    }).then( res =>{
+      console.log(res.result.fileID)
+      const fileId = res.result.fileID
+      
+      wx.hideLoading()
+      wx.previewImage({
+        urls: [fileId],
+        current: fileId
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

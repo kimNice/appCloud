@@ -16,7 +16,9 @@ Page({
     isPlaying:false, // 默认不播放
     isgoLyric:false,
     lyric:'',
-    isSame:false
+    isSame:false,
+    isLike:false, //是否添加喜欢
+    showModal:false,
   },
 
   /**
@@ -27,14 +29,113 @@ Page({
     currentMusic=options.index
     musiclist = wx.getStorageSync('musicList')
     this._getMusicInfo(options.musicId)
+    
   },
   isLyric(){
     this.setData({
       isgoLyric: !this.data.isgoLyric
     })
   },
-  _getMusicInfo(musicId){
+  _getIsLike(){
+    wx.cloud.callFunction({
+      name:'likeMusic',
+      data:{
+        id: musiclist[currentMusic].id,
+        $url:'getLike'
+      }
+    }).then(res =>{
+      let total = res.result.total
+      if (!total){
+        this.setData({
+          isLike:false
+        })
+      }else{
+        this.setData({
+          isLike: true
+        })
+      }
+    })
+  },
+  //添加到喜欢
+  like(){
+    let like = this.data.isLike
+    let musicInfo = musiclist[currentMusic]
+    let id = musiclist[currentMusic].id
+    wx.getSetting({
+      success:(res) =>{
+        
+        if(res.authSetting['scope.userInfo']){
+          
+          wx.getUserInfo({
+            success:(info)=>{
+              console.log(info)
+              //判断是否已经是喜欢
+              if (!like) {
+                wx.showLoading({
+                  title: '添加中',
+                  mask: true
+                })
+                //去添加喜欢歌曲
+                wx.cloud.callFunction({
+                  name: 'likeMusic',
+                  data: {
+                    musicInfo,
+                    id,
+                    $url: "addLike"
+                  }
+                }).then(res => {
+                  wx.hideLoading()
+                  if (res.result) {
+                    this.setData({
+                      isLike: true
+                    })
+                  } else {
+                    return
+                  }
+                })
+              } else {
+                console.log(id)
+                //去删除歌曲
+                wx.cloud.callFunction({
+                  name: 'likeMusic',
+                  data: {
+                    id,
+                    $url: 'removeLike'
+                  }
+                }).then(res => {
+                  // console.log(res)
+                  let remove = res.result.stats.removed
+                  if (remove) {
+                    this.setData({
+                      isLike: false
+                    })
+                  }
+                  return
+                })
+              }
+            }
+          })
+        }else{
+          this.setData({
+            showModal:true
+          })
+        }
+      }
+    })
     
+  },
+  onloginsuccess(event){
+    console.log("喜欢")
+    this.like()
+  },
+  onloginfail(){
+    wx.showModal({
+      title: '未授权不能添加喜欢',
+      content: '',
+    })
+  },
+  //得到音乐信息
+  _getMusicInfo(musicId){
     if (musicId == app.getPlayingMusicId()){
       this.setData({
         isSame: true
@@ -57,7 +158,8 @@ Page({
       title: musiclist[currentMusic].name ,
     })
     wx.showLoading({
-      title: '歌曲加载中',
+      title: '加载中',
+      mask:true
     })
     //调用云函数
     wx.cloud.callFunction({
@@ -70,9 +172,21 @@ Page({
       let result = JSON.parse(res.result)
       // console.log(result)
       if(result.data[0].url == null){
-        wx.showToast({
-          title: '无权限播放',
+        wx.showModal({
+          title: 'VIP歌曲无权播放',
+          content:"请到网易云音乐APP听",
+          cancelText:'上一首',
+          confirmText:'下一首',
+          success:(res)=>{
+            if(res.confirm){
+              this.nextPlay()
+            }else{
+              this.upPlay()
+            }
+          }
         })
+        
+        return
       }
       if(!this.data.isSame){
         backgroundAudioManger.src = result.data[0].url
@@ -80,14 +194,18 @@ Page({
         backgroundAudioManger.coverImgUrl = musiclist[currentMusic].al.picUrl
         backgroundAudioManger.singer = musiclist[currentMusic].ar[0].name
         backgroundAudioManger.epname = musiclist[currentMusic].al.name
-        
+
+        //保存播放历史
+        this.onHistory()
+        //查询歌曲是否喜欢
+        this._getIsLike()
       }
       this.setData({
         isPlaying: true
       })
       
     })
-    wx.hideLoading()
+    
     wx.cloud.callFunction({
       name:'music',
       data:{
@@ -95,6 +213,7 @@ Page({
         $url:"lyric"
       }
     }).then( res => {
+      wx.hideLoading()
       let lyric ='暂无歌词'
       //字符串转成对象
       let results=JSON.parse(res.result).lrc
@@ -132,6 +251,33 @@ Page({
       isPlaying: false
     })
   },
+  
+  onHistory(){
+    
+    const openid = app.globalData.openid
+    let music = musiclist[currentMusic]
+    let history = wx.getStorageSync(openid)
+    
+    let bool = false
+    for(let i=0,len=history.length;i<len;i++){
+      if (history[i].id == music.id){
+        bool = true
+        break
+      }
+    }
+    if(!bool){
+      history.unshift(music)
+     
+      wx.setStorage({
+        key: openid,
+        data: history,
+      })
+    }
+    // const musicStrong=wx.setStorage({
+    //   key: openid,
+    //   data: '',
+    // })
+  },
   //上一首
   upPlay(){
    
@@ -145,6 +291,7 @@ Page({
   },
   //下一首
   nextPlay(){
+    console.log(musiclist[currentMusic].id)
     currentMusic++
     //如果是最后一首就跳转到第一首
     if (currentMusic === musiclist.length){

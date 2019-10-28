@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "p-progressbar":"/components/progress-bar/progress-bar",
-    "p-lyric":"/components/lyric/lyric"
+    "p-lyric":"/components/lyric/lyric",
+    "p-login":"/components/login/login"
   }
 }

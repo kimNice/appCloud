@@ -71,14 +71,16 @@
   transform: translateX(-50%);
   align-items: center;
 }
-.player-list .icon-047caozuo_shangyishou,.icon-048caozuo_xiayishou{
+.player-list .icon-047caozuo_shangyishou,.icon-048caozuo_xiayishou,.icon-xihuan1,.icon-xihuan{
   font-size: 80rpx;
 }
 .player-list .icon-zanting1,.icon-bofang1{
   font-size: 120rpx;
   padding:0 50rpx;
 }
-
+.icon-xihuan{
+  color:#d43c33;
+}
 .rotation{
   animation: rotation 12s linear infinite;
   -moz-animation: rotation 12s linear infinite;

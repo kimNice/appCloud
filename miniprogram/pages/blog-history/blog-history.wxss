@@ -1,0 +1,35 @@
+/* pages/blog-history/blog-history.wxss */
+
+.buttom-text{
+  position: relative;
+  font-size: 26rpx;
+  width: 100%;
+  background: #f1f1f1;
+  color:#555;
+  text-align: center;
+  padding:20rpx 10rpx;
+}
+.buttom-text text::after{
+  content: "";
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+  width: 40rpx;
+  height: 2rpx;
+  background: rgba(85, 85, 85, 0.884);
+
+}
+.buttom-text text::before{
+  content: "";
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+  width: 40rpx;
+  height: 2rpx;
+  left: 275rpx;
+  background: rgba(85, 85, 85, 0.849);
+
+}
+.list{
+  margin-bottom: 20rpx;
+}

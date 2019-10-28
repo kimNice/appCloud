@@ -1,0 +1,14 @@
+<view class="history">
+  <block wx:for="{{blogHistory}}" wx:key="_id">
+        
+          <view class="list">
+              <p-blog-card blogList="{{item}}" bind:tap="onCard" data-_id="{{item._id}}"/>
+
+              <p-blog-ctrl blogId="{{item._id}}" blogList="{{item}}" iconfont="iconfont" icon-pinglun="icon-pinglun" icon-fenxiang="icon-fenxiang-1"/>
+          </view>
+          
+    </block>
+    <view class="buttom-text" hidden="{{isOver}}">
+        <text>已经到底了</text>
+    </view>
+</view>

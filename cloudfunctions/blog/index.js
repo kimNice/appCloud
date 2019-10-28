@@ -73,6 +73,14 @@ exports.main = async (event, context) => {
     }
 
   })
+  //根据openid查询用户发表的博客
+  const wxContext = cloud.getWXContext()
+  app.router("getBlogHistory", async (ctx,next) =>{
+    ctx.body=await blogSelectList.where({ _openid: wxContext.OPENID}).skip(event.start).limit(event.count).orderBy("createTime","desc").get()
+    .then(res=>{
+      return res.data
+    })
+  })
 
   return app.serve()
 }

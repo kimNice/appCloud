@@ -19,5 +19,7 @@
       <text class="iconfont icon-047caozuo_shangyishou" bind:tap="upPlay"></text>
       <text class="iconfont  {{isPlaying?'icon-bofang1':'icon-zanting1'}}" bindtap="stopPlay"></text>
       <text class="iconfont icon-048caozuo_xiayishou" bind:tap="nextPlay"></text>
+      <text class="iconfont {{isLike?'icon-xihuan':'icon-xihuan1'}}" style="margin-left:50rpx;" bind:tap="like"></text>
   </view>
 </view>
+<p-login showModal="{{!showModal}}" bind:loginsuccess="onloginsuccess" bind:loginfail="onloginfail"/>

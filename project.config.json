@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -73,6 +73,19 @@
 					"name": "detail",
 					"pathName": "pages/blog-detail/blog-detail",
 					"query": "id=dc9a49695da044fb024444ba504a1db6",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/prolist/prolist",
+					"pathName": "pages/prolist/prolist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/like-music/like-music",
+					"pathName": "pages/like-music/like-music",
 					"scene": null
 				}
 			]

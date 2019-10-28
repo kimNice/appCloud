@@ -7,6 +7,9 @@
     "pages/player/player",
     "pages/blog-edit/blog-edit",
     "pages/blog-detail/blog-detail",
+    "pages/play-history/play-history",
+    "pages/blog-history/blog-history",
+    "pages/like-music/like-music",
     "pages/dome/dome"
     
   ],

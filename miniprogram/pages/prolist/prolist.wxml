@@ -1,2 +1,39 @@
-<!--pages/prolist/prolist.wxml-->
-<text>pages/prolist/prolist.wxml</text>
+<view class="head"> 
+    <view class="headImg">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class="headName">
+      <open-data type="userNickName"></open-data>
+    </view>
+</view>
+
+<view class="optionlist">
+    <view class="list-item">
+        <navigator class="content" url="/pages/play-history/play-history" hover-class="none">
+            <i class="iconfont icon-ziyuanldpi"></i>
+            <text>播放历史</text>
+            <i class="iconfont icon-youjiantou"></i>
+        </navigator>
+    </view>
+    <view class="list-item">
+        <navigator class="content" url="/pages/blog-history/blog-history" hover-class="none">
+          <i class="iconfont icon-shoucang"></i>
+          <text>我的发现</text>
+          <i class="iconfont icon-youjiantou"></i>
+        </navigator>
+    </view>
+    <view class="list-item">
+        <navigator class="content" url="/pages/like-music/like-music" hover-class="none">
+          <i class="iconfont icon-xihuan"></i>
+          <text>我的喜欢</text>
+          <i class="iconfont icon-youjiantou"></i>
+        </navigator>
+    </view>
+    <view class="list-item">
+        <view class="content" bind:tap="onQrCode">
+          <i class="iconfont icon-erweima"></i>
+          <text>小程序码</text>
+          <i class="iconfont icon-youjiantou"></i>
+        </view>
+    </view>
+</view>

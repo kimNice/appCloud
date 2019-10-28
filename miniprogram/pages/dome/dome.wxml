@@ -33,6 +33,10 @@
     <text>城主只能有一个</text>
 </view>
 
+<view>
+  <button open-type="getUersInfo" bindgetuserinfo="onGetUser"></button>
+</view>
+
 
 <view class="bottom">
     去支付

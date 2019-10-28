@@ -1,0 +1,11 @@
+<view class="like-top">
+  <view class="like-mask">
+  </view>
+  <view class="tou">
+    <view class="img"><open-data type="userAvatarUrl"></open-data></view>
+    <view class="textShow"><open-data class="userName" type="userNickName"></open-data><text class="userName">的喜欢</text></view>
+  </view>
+  
+</view>
+<!-- 歌单列表 -->
+<p-musiclist musiclist="{{musiclist}}"/>

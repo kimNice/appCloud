@@ -5,6 +5,7 @@ page{
 .blog{
   padding:20rpx;
   background: #fff;
+ 
 }
 .blog-title{
  
@@ -31,11 +32,13 @@ page{
 }
 .blog-img{
   margin-top:20rpx;
- 
+
 
 }
 .blog-img .imgList{
   width: 200rpx;
   height: 200rpx;
   margin: 10rpx;
+ 
+  
 }

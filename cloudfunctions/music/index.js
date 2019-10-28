@@ -16,7 +16,7 @@ const BASE_URL="http://musicapi.xiecheng.live"
 // 云函数入口函数
 exports.main = async (event, context) => {
   const app=new TcbRouter({event})
-
+  //请求歌单列表
   app.router("playlist",async (ctx,next) => {
     ctx.body= await cloud.database().collection("playlist")
     .skip(event.start).limit(event.count)
@@ -33,7 +33,9 @@ exports.main = async (event, context) => {
     ctx.body = await rq(BASE_URL + "/playlist/detail?id=" + parseInt(event.musicid))
     .then(res => {
       return JSON.parse(res)
-    })
+      }).catch(res =>{
+        console.log("错误信息", res);
+      })
   })  
 
   app.router("musicinfo",async (ctx,next) => {
